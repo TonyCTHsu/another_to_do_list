@@ -1,0 +1,4 @@
+<%= form_with model: list, authenticity_token: true, html: { class: 'list-container' } do |f| %>
+  <%= f.text_field :name %>
+  <%= f.submit %>
+<% end %>
