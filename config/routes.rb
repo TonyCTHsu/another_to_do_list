@@ -4,6 +4,12 @@ Rails.application.routes.draw do
     member do
       put :toggle
     end
+
+    resources :list_items, only: [:create, :edit, :update, :destroy] do
+      member do
+        put :toggle
+      end
+    end
   end
 
   root to: 'lists#index'

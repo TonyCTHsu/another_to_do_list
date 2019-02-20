@@ -1,20 +1,16 @@
 <div id="list-<%= list.id %>">
+
   <%= render partial: 'list_content', locals: { list: list } %>
+
   <div>
     <%= button_to(list.toggle_button_name, toggle_list_path(id: list.id, list: { publish: !list.publish }), method: :put, remote: true ) %>
     <%= button_to('Delete', list_path(list), method: :delete, remote: true) %>
   </div>
-  <ul>
-    <% list.list_items.each do |item| %>
-      <li id="item-<%= item.id %>">
-        <%= item.description %>
-      </li>
-    <% end %>
-    <li>
-      <%= form_for :list_item do |f| %>
-        <%= f.text_field :description %>
-        <%= f.submit 'Add' %>
-      <% end %>
-    </li>
-  </ul>
+
+  <div id="list-<%= list.id %>-ordered-items">
+    <ul>
+      <%= render partial: 'list_items/item', collection: list.list_items, as: :item %>
+    </ul>
+    <%= render partial: 'list_items/item_form', locals: { item: list.list_items.build } %>
+  </div>
 </div>
