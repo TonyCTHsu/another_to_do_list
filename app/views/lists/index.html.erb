@@ -1,11 +1,14 @@
 <div id='main'>
-  <div>
-    New list
-    <%= render partial: 'list_form', locals: { list: List.new } %>
-  </div>
+  <% if @status %>
+    <div>
+      New list
+      <%= render partial: 'list_form', locals: { list: List.new } %>
+    </div>
+  <% end %>
+
+  <%= link_to((@status ? 'Trash' : 'Published list'), lists_path(status: !@status)) %>
+
   <div class="list-list">
     <%= render partial: 'list', collection: @lists %>
   </div>
-
-  <%= link_to((@status ? 'Trash' : 'Published list'), lists_path(status: !@status)) %>
 </div>
