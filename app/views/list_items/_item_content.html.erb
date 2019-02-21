@@ -3,6 +3,6 @@
     <%= item.description %>
   </div>
   <div class='inline-block'>
-    <%= button_to('Edit', edit_list_list_item_path(item.list, item), method: :get, remote: true) %>
+    <%= button_to('Edit', edit_list_list_item_path(item.list, item), method: :get, remote: true, disabled: !item.publish?) %>
   </div>
 </div>
