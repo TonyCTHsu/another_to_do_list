@@ -6,4 +6,6 @@
   <div class="list-list">
     <%= render partial: 'list', collection: @lists %>
   </div>
+
+  <%= link_to((@status ? 'Trash' : 'Published list'), lists_path(status: !@status)) %>
 </div>

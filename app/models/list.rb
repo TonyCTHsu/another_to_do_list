@@ -3,6 +3,11 @@ class List < ApplicationRecord
 
   before_save :cascade_update_items, if: :publish_changed?
 
+  scope :publish_status, -> (status) do
+    where(publish: status)
+  end
+
+
   def toggle_button_name
     if publish?
       'Destroy'

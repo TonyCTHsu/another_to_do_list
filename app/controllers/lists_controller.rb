@@ -1,8 +1,9 @@
 class ListsController < ApplicationController
+  before_action :status, only: [:index, :edit, :update, :toggle, :destroy]
   before_action :find_list, only: [:edit, :update, :toggle, :destroy]
 
   def index
-    @lists = List.includes(:list_items).all
+    @lists = lists_scope.includes(:list_items).where(list_items: { publish: status } )
   end
 
   def create
@@ -27,6 +28,14 @@ class ListsController < ApplicationController
   end
 
   private
+
+  def status
+    @status ||= params.fetch(:status, 'true') == 'true'
+  end
+
+  def lists_scope
+    List.publish_status(status)
+  end
 
   def find_list
     @list = List.find(params[:id])
