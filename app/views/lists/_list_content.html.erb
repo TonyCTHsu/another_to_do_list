@@ -1,4 +1,8 @@
-<div class='list-container'>
-  <%= list.name %>
-  <%= button_to('Edit', edit_list_path(list), method: :get, remote: true ) %>
+<div class='list-container inline-block'>
+  <div class='inline-block'>
+    <%= list.name %>
+  </div>
+  <div class='inline-block'>
+    <%= button_to('Edit', edit_list_path(list), method: :get, remote: true ) %>
+  </div>
 </div>

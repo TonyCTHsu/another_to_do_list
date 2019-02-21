@@ -13,3 +13,17 @@
  *= require_tree .
  *= require_self
  */
+
+#main {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.list-list > div {
+  margin-top: 50px;
+}
+
+.inline-block {
+  display: inline-block;
+  vertical-align: top;
+}

@@ -1,5 +1,11 @@
 <li id="item-<%= item.id %>">
-  <%= render partial: 'list_items/item_content', locals: { item: item } %>
-  <%= button_to(item.toggle_button_name, toggle_list_list_item_path(item.list, item, list_item: { publish: !item.publish }), method: :put, remote: true) %>
-  <%= button_to('Delete', list_list_item_path(item.list, item), method: :delete, remote: true) %>
+  <div class='inline-block'>
+    <%= render partial: 'list_items/item_content', locals: { item: item } %>
+  </div>
+  <div class='inline-block'>
+    <%= button_to(item.toggle_button_name, toggle_list_list_item_path(item.list, item, list_item: { publish: !item.publish }), method: :put, remote: true) %>
+  </div>
+  <div class='inline-block'>
+    <%= button_to('Delete', list_list_item_path(item.list, item), method: :delete, remote: true) %>
+  </div>
 </li>
