@@ -11,4 +11,7 @@
   <div class="list-list">
     <%= render partial: 'list', collection: @lists %>
   </div>
+
+
+  <%= pagy_nav(@pagy).html_safe %>
 </div>

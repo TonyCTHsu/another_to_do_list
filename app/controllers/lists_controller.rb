@@ -3,8 +3,8 @@ class ListsController < ApplicationController
   before_action :find_list, only: [:edit, :update, :toggle, :destroy]
 
   def index
-    @lists = lists_scope.includes(:list_items).where(list_items: { publish: status } )
-  end
+    @pagy, @lists = pagy(lists_scope.includes(:list_items).where(list_items: { publish: status } ))
+end
 
   def create
     @list = List.create(list_params)
